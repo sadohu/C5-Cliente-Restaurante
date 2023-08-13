@@ -11,7 +11,7 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
         private IProducto iProducto;
         private ICategoria iCategoria;
 
-        ProductoController()
+        public ProductoController()
         {
             iProducto = new ProductoDao();
             iCategoria = new CategoriaDao();
