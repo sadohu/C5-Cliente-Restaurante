@@ -1,0 +1,75 @@
+﻿@model IEnumerable<C5_PJ_Restaurante_Cliente_MVC.Models.ItemProductoModel>
+
+@{
+    ViewData["Title"] = "Canasta";
+}
+
+<h1>Canasta</h1>
+
+<p>
+    <a asp-action="Portal" class="btn btn-primary">Ir a la Tienda</a>
+    <a asp-action="Comprar" class="btn btn-primary">Realizar la Compra</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nom_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.des_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.des_categoria_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.preciouni_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.monto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom_producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.des_producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.des_categoria_producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.preciouni_producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock_producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.monto)
+                </td>
+                <td>
+                    @Html.ActionLink("Eliminar", "Delete", new { id=item.id_producto, q=item.stock_producto })
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="5"> Monto total del Pedido</td>
+            <td>@Model.Sum(c =>c.monto).ToString("0.00")</td>
+        </tr>
+    </tbody>
+</table>
