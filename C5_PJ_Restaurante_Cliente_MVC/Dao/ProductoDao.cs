@@ -1,6 +1,7 @@
 ﻿using C5_PJ_Restaurante_Cliente_MVC.Business;
 using C5_PJ_Restaurante_Cliente_MVC.Models;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace C5_PJ_Restaurante_Cliente_MVC.Dao
 {
@@ -20,7 +21,12 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Dao
             return buscarAsync(id);
         }
 
-        private async Task<List<tb_producto>> getProductos()
+		public Task<string> Comprar(Pedido pedido)
+		{
+			return comprar(pedido);
+		}
+
+		private async Task<List<tb_producto>> getProductos()
         {
             List<tb_producto> lista = new List<tb_producto>();
             using (var client = new HttpClient())
@@ -59,6 +65,7 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Dao
                         des_categoria_producto = p.des_categoria_producto,
                         preciouni_producto = p.preciouni_producto,
                         stock_producto = p.stock_producto,
+                        imagen_producto = p.imagen_producto
                     }).ToList();
             }
             return pro;
@@ -74,5 +81,18 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Dao
             }
             return producto;
         }
-    }
+
+		private async Task<string> comprar(Pedido pedido)
+		{
+			string respuesta = "";
+			using (var client = new HttpClient())
+			{
+				client.BaseAddress = new Uri("https://localhost:7165/api/Pedido/");
+				StringContent content = new(JsonConvert.SerializeObject(pedido), Encoding.UTF8, "application/json");
+				HttpResponseMessage response = await client.PostAsync("savePedido", content);
+				respuesta = await response.Content.ReadAsStringAsync();
+			}
+			return respuesta;
+		}
+	}
 }

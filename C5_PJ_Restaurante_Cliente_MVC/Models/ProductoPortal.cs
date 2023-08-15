@@ -16,5 +16,6 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Models
         public decimal preciouni_producto { get; set; }
         [Display(Name = "Unidades Disponibles")]
         public int stock_producto { get; set; }
+        public string? imagen_producto { get; set; }
     }
 }

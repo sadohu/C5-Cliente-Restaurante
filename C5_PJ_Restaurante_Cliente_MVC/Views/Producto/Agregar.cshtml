@@ -49,7 +49,7 @@
         </div>
         <div class="col-sm-4">
             <!--verificar que las imagenes sean todos png o jpg-->
-            <img src="@Url.Content($"~/img/{Model.id_producto}.jpg")" />
+            <img src="@Url.Content(Model.imagen_producto)" style="width:-webkit-fill-available"  />
         </div>
     </div>
     <!--colocar un formulario donde envio los datos para almacenar en Session-->

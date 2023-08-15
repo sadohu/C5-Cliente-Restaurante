@@ -10,8 +10,9 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
     {
         private IProducto iProducto;
         private ICategoria iCategoria;
+		private const string SessionLogin = "_Login";
 
-        public ProductoController()
+		public ProductoController()
         {
             iProducto = new ProductoDao();
             iCategoria = new CategoriaDao();
@@ -67,6 +68,37 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
             JsonConvert.DeserializeObject<List<ItemProductoModel>>(HttpContext.Session.GetString("Canasta")));
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Canasta(int id = 0)
+        {
+            var carrito = JsonConvert.DeserializeObject<List<ItemProductoModel>>(HttpContext.Session.GetString("Canasta"));
+            var usuario = JsonConvert.DeserializeObject<Usuario>(HttpContext.Session.GetString(SessionLogin));
+            List<Cart> carts = new();
+            decimal count = 0;
+            foreach(var item in carrito)
+            {
+                Cart cart = new()
+                {
+                    id_producto = item.id_producto,
+                    cantidad_producto = item.stock_producto
+                };
+				count += item.monto;
+				carts.Add(cart);
+            }
+            Pedido pedido = new()
+            {
+                id_usuario_cliente = usuario.id_usuario,
+                id_medio_pago = 1,
+                monto_compra = count,
+                id_dirEntrega = 1,
+                carts = carts
+            };
+
+            //Enviar al DAO
+            string response = await iProducto.Comprar(pedido);
+            return RedirectToAction("Portal", "Producto");
+        }
+
         public IActionResult Delete(int id, int q)
         {
             //eliminar el registro del Session canasta por idproducto y cantidad
@@ -90,6 +122,5 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
             }
             return View(await Task.Run(() => iProducto.GetProductosPortal()));
         }//Fin de Portal
-
     }
 }

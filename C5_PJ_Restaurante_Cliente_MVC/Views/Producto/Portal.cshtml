@@ -12,7 +12,7 @@
     {
         <div class="registro">
             <!--verificar que las imagenes sean todos png o jpg-->
-            <img src="@Url.Content($"~/img/{item.id_producto}.jpg")" />
+            <img src="@item.imagen_producto" />
             <div class="row">
                 <div class="col-12">@Html.DisplayFor(modelItem => item.id_producto)</div>
                 <div class="col-12">@Html.DisplayFor(modelItem => item.nom_producto)</div>
