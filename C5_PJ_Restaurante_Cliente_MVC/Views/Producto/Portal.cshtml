@@ -1,0 +1,30 @@
+﻿@model IEnumerable<C5_PJ_Restaurante_Cliente_MVC.Models.ProductoPortal>
+@{
+    ViewData["Title"] = "Portal";
+}
+<link href="~/css/ProyectEcommerce.css" rel="stylesheet" type="text/css" />
+<h2>Portal de Ventas</h2>
+<div>
+    <a asp-action="Canasta" asp-controller="Producto" class="btn btn-danger">Ir a la Canasta</a>
+</div>
+<div class="portal">
+    @foreach (var item in Model)
+    {
+        <div class="registro">
+            <!--verificar que las imagenes sean todos png o jpg-->
+            <img src="@item.imagen_producto" />
+            <div class="row">
+                @*<div class="col-12">@Html.DisplayFor(modelItem => item.id_producto)</div>*@
+                <div class="col-12">@Html.DisplayFor(modelItem => item.nom_producto)</div>
+                <div class="col-12">@Html.DisplayFor(modelItem => item.des_producto)</div>
+                <div class="col-12">@Html.DisplayFor(modelItem => item.des_categoria_producto)</div>
+                <div class="col-12">@Html.DisplayFor(modelItem => item.preciouni_producto)</div>
+                <div class="col-12">@Html.DisplayFor(modelItem => item.stock_producto)</div>
+                <br>
+                <div class="col-12">
+                    @Html.ActionLink("Agregar", "Agregar", new { id=item.id_producto })
+                </div>
+            </div>
+        </div>
+    }
+</div>
