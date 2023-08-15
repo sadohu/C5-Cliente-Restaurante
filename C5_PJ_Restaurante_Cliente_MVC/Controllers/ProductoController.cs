@@ -10,9 +10,9 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
     {
         private IProducto iProducto;
         private ICategoria iCategoria;
-		private const string SessionLogin = "_Login";
+        private const string SessionLogin = "_Login";
 
-		public ProductoController()
+        public ProductoController()
         {
             iProducto = new ProductoDao();
             iCategoria = new CategoriaDao();
@@ -75,15 +75,15 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
             var usuario = JsonConvert.DeserializeObject<Usuario>(HttpContext.Session.GetString(SessionLogin));
             List<Cart> carts = new();
             decimal count = 0;
-            foreach(var item in carrito)
+            foreach (var item in carrito)
             {
                 Cart cart = new()
                 {
                     id_producto = item.id_producto,
                     cantidad_producto = item.stock_producto
                 };
-				count += item.monto;
-				carts.Add(cart);
+                count += item.monto;
+                carts.Add(cart);
             }
             Pedido pedido = new()
             {

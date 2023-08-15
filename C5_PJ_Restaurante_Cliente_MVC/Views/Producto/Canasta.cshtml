@@ -8,14 +8,15 @@
 
 <p>
     <a asp-action="Portal" class="btn btn-primary">Ir a la Tienda</a>
-    <a asp-action="Comprar" class="btn btn-primary">Realizar la Compra</a>
+    @*<a asp-action="Canasta" asp-controller="Producto" class="btn btn-primary">Realizar la Compra</a>*@
+    @using (Html.BeginForm("Canasta", "Producto", FormMethod.Post, new { @class = "form-singin" }))
+    {
+        <input type="submit" value="Realizar la Compra" class="btn btn-lg btn-primary" />
+    }
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id_producto)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.nom_producto)
             </th>
@@ -41,9 +42,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id_producto)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.nom_producto)
                 </td>
