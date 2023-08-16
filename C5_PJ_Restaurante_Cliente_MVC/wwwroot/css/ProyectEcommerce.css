@@ -62,7 +62,7 @@ img {
     color: white; /* Cambia el color del texto si es necesario */
     border: none; /* Elimina el borde si lo deseas */
     padding: 8px 25px; /* Ajusta el espaciado interior del botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    cursor: pointer; 
     text-decoration: none;
     margin:30px 0px 20px 0px;
     border-radius: 10px;
