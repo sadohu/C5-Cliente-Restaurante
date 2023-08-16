@@ -94,8 +94,9 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
                 carts = carts
             };
 
-            //Enviar al DAO
             string response = await iProducto.Comprar(pedido);
+
+            HttpContext.Session.SetString("Canasta", JsonConvert.SerializeObject(new List<ItemProductoModel>()));
             return RedirectToAction("Portal", "Producto");
         }
 
