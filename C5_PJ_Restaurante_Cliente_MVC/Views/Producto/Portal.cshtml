@@ -3,28 +3,51 @@
     ViewData["Title"] = "Portal";
 }
 <link href="~/css/ProyectEcommerce.css" rel="stylesheet" type="text/css" />
-<h2>Portal de Ventas</h2>
+<link href="~/css/ProductCard.css" rel="stylesheet" type="text/css" />
+<!--<h2>Portal de Ventas</h2>-->
+
 <div>
     <a asp-action="Canasta" asp-controller="Producto" class="btn btn-danger">Ir a la Canasta</a>
 </div>
+
+<div class="banner">
+    <img id="banner"src="~/img/banner_portal.jpg" alt="Banner" />
+</div>
+
+
 <div class="portal">
     @foreach (var item in Model)
     {
         <div class="registro">
-            <!--verificar que las imagenes sean todos png o jpg-->
-            <img src="@item.imagen_producto" />
-            <div class="row">
-                @*<div class="col-12">@Html.DisplayFor(modelItem => item.id_producto)</div>*@
-                <div class="col-12">@Html.DisplayFor(modelItem => item.nom_producto)</div>
-                <div class="col-12">@Html.DisplayFor(modelItem => item.des_producto)</div>
-                <div class="col-12">@Html.DisplayFor(modelItem => item.des_categoria_producto)</div>
-                <div class="col-12">@Html.DisplayFor(modelItem => item.preciouni_producto)</div>
-                <div class="col-12">@Html.DisplayFor(modelItem => item.stock_producto)</div>
-                <br>
-                <div class="col-12">
-                    @Html.ActionLink("Agregar", "Agregar", new { id=item.id_producto })
+            
+            <div class="column-card">
+                <!--verificar que las imagenes sean todos png o jpg-->
+                <img class="image-product" src="@item.imagen_producto" />
+
+            </div>
+
+            <div class ="column-card description">
+                
+                <div class="row">
+                    @*<div class="col-12">@Html.DisplayFor(modelItem => item.id_producto)</div>*@
+                    <span style="font-weight: bold; font-size: 1.2em;">
+                        <div class="col-12">@Html.DisplayFor(modelItem => item.nom_producto)</div>
+                    </span>
+                    @*<div class="col-12">@Html.DisplayFor(modelItem => item.des_producto)</div>*@
+                    <div class="col-12">@Html.DisplayFor(modelItem => item.des_categoria_producto)</div>
+                    <br><br>
+                    <div class="col-12">S/. @Html.DisplayFor(modelItem => item.preciouni_producto)</div>                
+                    <br>
+                    <div class="col-12"> Disponible : @Html.DisplayFor(modelItem => item.stock_producto) unid.</div>
+                    
+                </div>
+
+                <div class="col-12 ">
+                    @Html.ActionLink("Agregar", "Agregar", new { id=item.id_producto }, new { @class = "btn-agregar" })
                 </div>
             </div>
+            
+         
         </div>
     }
 </div>

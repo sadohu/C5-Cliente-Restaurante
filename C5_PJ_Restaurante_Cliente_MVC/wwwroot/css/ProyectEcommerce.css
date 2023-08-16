@@ -3,16 +3,41 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 10px;
     row-gap: 10px;
-    background-color: salmon;
+   
+   
+}
+#banner {
+    width: 100%;
+    height: 100%;
 }
 
 .registro {
-    min-height: 300px;
+    min-height: 150px;
     height: auto;
-    margin: 1%;
-    text-align: center;
+    margin: 10px;
+    text-align: left;
     background-color: white;
+    border-radius: 10px;
+    display: flex;
+    font-size: 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    justify-content: center;
+    align-items: center;
 }
+
+.column-card {
+    
+}
+
+.description {
+    width: 290px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
 
 .deshabilita {
     visibility: hidden;
@@ -25,6 +50,20 @@ h2 {
 img {
     width: 100px;
     height: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px;
+}
+
+
+
+
+/***botones***/
+.btn-agregar {
+    background-color: red;
+    color: white; /* Cambia el color del texto si es necesario */
+    border: none; /* Elimina el borde si lo deseas */
+    padding: 8px 25px; /* Ajusta el espaciado interior del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    text-decoration: none;
+    margin-left: 180px;
+    border-radius: 15px;
 }
