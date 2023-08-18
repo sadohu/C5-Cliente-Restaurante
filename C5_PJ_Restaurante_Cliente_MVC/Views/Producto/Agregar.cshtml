@@ -2,75 +2,111 @@
 @{
     ViewData["Title"] = "Agregar";
 }
-<h1>Agregar</h1>
-<div>
-    <h4>Producto Seleccionado</h4>
-    <hr />
-    <div class="row">
-        <div class="col-sm-8">
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.id_producto)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.id_producto)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.nom_producto)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.nom_producto)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.des_producto)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.des_producto)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.des_categoria_producto)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.des_categoria_producto)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.preciouni_producto)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.preciouni_producto)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.stock_producto)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.stock_producto)
-                </dd>
-            </dl>
-        </div>
-        <div class="col-sm-4">
-            <!--verificar que las imagenes sean todos png o jpg-->
-            <img src="@Url.Content(Model.imagen_producto)" style="width:-webkit-fill-available"  />
-        </div>
-    </div>
-    <!--colocar un formulario donde envio los datos para almacenar en Session-->
-    <div>
-        <form action="Seleccionar" method="post">
-            @Html.Hidden("idproducto",Model.id_producto)
+
+
+<style>
+    .alerts{
+        
+        border-radius: 20px;
+        color:black;
+        margin: 10px;
+    }
+</style>
+
+<!-- Start form -->
+
+<section id="contact-us" class="contact-us section">
+    <div class="container login">
+        <div class="contact-head">
             <div class="row">
-                <div class="col-md-2">
-                    Ingrese la cantidad
-                </div>
-                <div class="col-md-10">
-                    @Html.TextBox("cantidad",1,new{type="number",min=1, max=Model.stock_producto})
-                </div>
-                <div class="col-md-12">
-                    <input type="submit" value="Agregar" class="btn btn-primary" />
-                    <a asp-action="Portal" class="btn btn-primary">Retornar</a>
+                <div class="col-lg-12 col-12 ">
+                    <div class="form-main">
+                       
+                        <div class="container">
+                            <div class="row justify-content-center">
+
+
+                                        
+                                        <div>
+                                    <h1>Agregar</h1>
+                                    <h3>👉 @Html.DisplayFor(model => model.nom_producto) </h3>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <dl class="row">
+                                                       @* <dt class="col-sm-2">
+                                                            @Html.DisplayNameFor(model => model.id_producto)
+                                                        </dt>
+                                                        <dd class="col-sm-10">
+                                                            @Html.DisplayFor(model => model.id_producto)
+                                                        </dd>*@
+                                                       @* <dt class="col-sm-2">
+                                                            @Html.DisplayNameFor(model => model.nom_producto)
+                                                        </dt>
+                                                        <dd class="col-sm-10">
+                                                            @Html.DisplayFor(model => model.nom_producto)
+                                                        </dd>*@
+                                                        <dt class="col-sm-2">
+                                                            @Html.DisplayNameFor(model => model.des_producto)
+                                                        </dt>
+                                                        <dd class="col-sm-10">
+                                                            @Html.DisplayFor(model => model.des_producto)
+                                                        </dd>
+                                                        <dt class="col-sm-2">
+                                                            @Html.DisplayNameFor(model => model.des_categoria_producto)
+                                                        </dt>
+                                                        <dd class="col-sm-10">
+                                                            @Html.DisplayFor(model => model.des_categoria_producto)
+                                                        </dd>
+                                                        <dt class="col-sm-2">
+                                                            @Html.DisplayNameFor(model => model.preciouni_producto)
+                                                        </dt>
+                                                        <dd class="col-sm-10">
+                                                            S/. @Html.DisplayFor(model => model.preciouni_producto)
+                                                        </dd>
+                                                        <dt class="col-sm-2">
+                                                            @Html.DisplayNameFor(model => model.stock_producto)
+                                                        </dt>
+                                                        <dd class="col-sm-10">
+                                                            @Html.DisplayFor(model => model.stock_producto) unidades
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <!--verificar que las imagenes sean todos png o jpg-->
+                                                    <img src="@Url.Content(Model.imagen_producto)" style="width:-webkit-fill-available"  />
+                                                </div>
+                                            </div>
+                                            <!--colocar un formulario donde envio los datos para almacenar en Session-->
+                                            <div>
+                                                <form action="Seleccionar" method="post">
+                                                    @Html.Hidden("idproducto",Model.id_producto)
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            Ingrese la cantidad
+                                                        </div>
+                                                        <div class="col-md-10">
+                                                            @Html.TextBox("cantidad",1,new{type="number",min=1, max=Model.stock_producto})
+                                                        </div>
+                                                        <br /><br />
+                                                        <div class="col-md-12">
+                                                            <input type="submit" value="Agregar" class="btn btn-primary" />
+                                                            <a asp-action="Portal" class="btn btn-primary">Retornar</a>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                    <div class="alerts" >
+                                        @ViewBag.mensaje
+                                            </div>
+                                        </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
-    </div>
-    <div>
-        @ViewBag.mensaje
-    </div>
-</div>
+        </div>
+</section>

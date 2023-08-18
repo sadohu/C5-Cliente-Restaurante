@@ -4,70 +4,128 @@
     ViewData["Title"] = "Canasta";
 }
 
-<h1>Canasta</h1>
-
-<p>
-    <a asp-action="Portal" class="btn btn-primary">Ir a la Tienda</a>
-    @*<a asp-action="Canasta" asp-controller="Producto" class="btn btn-primary">Realizar la Compra</a>*@
-    @using (Html.BeginForm("Canasta", "Producto", FormMethod.Post, new { @class = "form-singin" }))
-    {
-        <input type="submit" value="Realizar la Compra" class="btn btn-lg btn-primary" />
+<style>
+    body{
+        background-image: url('https://i.imgur.com/E51t9HJ.jpg');
+        background-size:cover
     }
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nom_producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.des_producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.des_categoria_producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.preciouni_producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.stock_producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.monto)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nom_producto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.des_producto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.des_categoria_producto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.preciouni_producto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.stock_producto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.monto)
-                </td>
-                <td>
-                    @Html.ActionLink("Eliminar", "Delete", new { id=item.id_producto, q=item.stock_producto })
-                </td>
-            </tr>
-        }
-        <tr>
-            <td colspan="5"> Monto total del Pedido</td>
-            <td>@Model.Sum(c =>c.monto).ToString("0.00")</td>
-        </tr>
-    </tbody>
-</table>
+
+    #contact-us{
+        margin-top:30px;
+  /*      background-color:white;*/
+    }
+
+    .canasta {
+        background-color: white;
+        
+    }
+
+    #logo-canasta{
+        width:20%;
+        height: 20%;
+    }
+
+</style>
+
+<!-- Start form -->
+
+<section id="contact-us" class="contact-us section">
+    <div class="container canasta ">
+        <div class="contact-head">
+            <div class="row">
+                <div class="col-lg-12 col-12 ">
+                    <div class="form-main">
+
+                        <span>
+                            <a asp-action="Portal" class="btn btn-primary">Ir a la Tienda</a>
+                        </span>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <img id="logo-canasta" src="https://i.imgur.com/DH7jHhg.png" alt="Logo" />
+
+                                <div class="container-fluid col-12">
+
+                                    <br /><br />
+                                    <h2> Canasta </h2>
+
+                                   
+                                </div>
+
+                             
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.nom_producto)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.des_producto)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.des_categoria_producto)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.preciouni_producto)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.stock_producto)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.monto)
+                                                            </th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.nom_producto)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.des_producto)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.des_categoria_producto)
+                                                                </td>
+                                                                <td>
+                                                                    S/. @Html.DisplayFor(modelItem => item.preciouni_producto)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.stock_producto)
+                                                                </td>
+                                                                <td>
+                                                                    S/. @Html.DisplayFor(modelItem => item.monto)
+                                                                </td>
+                                                                <td>
+                                                                 @Html.ActionLink("❌", "Delete", new { id=item.id_producto, q=item.stock_producto })
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                        <tr>
+                                                            <td colspan="5"> <em><b>Monto total del Pedido</b></em></td>
+                                                            <td><b> S/. @Model.Sum(c =>c.monto).ToString("0.00")</b></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                <div class="container-fluid col-12 text-right">
+
+                                                             <span>
+                                        @using (Html.BeginForm("Canasta", "Producto", FormMethod.Post, new { @class = "form-singin  " }))
+                                                            {
+                                            <input type="submit" value="Realizar la Compra" class="btn col-6 " />
+                                                            }
+                                                             </span>
+                                                </div>
+                                            
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

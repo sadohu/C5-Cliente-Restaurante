@@ -14,28 +14,81 @@
 	.text-danger {
 		color: red;
 	}
+
+	#contact-us{
+		margin-top:100px;
+	
+
+	}
+
+	.container.login{
+		/*background-image: url('https://i.imgur.com/QGDgUfV.jpg');*/
+		background-color: #B02625;
+		background-size: cover;
+		/*color:white;*/
+		color:white;
+		border-radius:15px;
+		
+	}
+
+	body {
+		background-image: url('https://i.imgur.com/HNNUJqU.jpg');
+		background-size:cover;
+	}
+
+	.validations{
+		color: white;
+		font-style:italic;
+	}
+
 </style>
 
 <div class="container">
 	<div class="row justify-content-center">
-		<h4>Inicio de sesión</h4>
+		<h4></h4>
 	</div>
 </div>
 
-<div class="container">
-	<div class="row justify-content-center">
-		@using (Html.BeginForm("Index", "Usuario", FormMethod.Post, new { @class = "form-singin" }))
-		{
-			@Html.AntiForgeryToken()
-			@Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
-			@Html.TextBoxFor(m => m.email_usuario, new {@class = "form-control", @placeholder = "Login"})
-			@Html.ValidationMessageFor(m => m.email_usuario, "", new { @class = "text-danger"})
+<!-- Login form -->
 
-			@Html.TextBoxFor(m => m.password_usuario, new {@class = "form-control", @placeholder = "Contraseña"})
-			@Html.ValidationMessageFor(m => m.password_usuario, "", new { @class = "text-danger"})
-			<br>
-			<input type="submit" value="Iniciar Sesión" class="btn btn-lg btn-primary" />
-		}
+<section id="contact-us" class="contact-us section">
+	<div class="container login">
+		<div class="contact-head">
+			<div class="row">
+				<div class="col-lg-12 col-12 ">
+					<div class="form-main">
+						<div class="" align="center">
+						
+							<h3 align="center">Bienvenido</h3>
+						</div>
+
+						<div class="container">
+							<div class="row justify-content-center">
+								@using (Html.BeginForm("Index", "Usuario", FormMethod.Post, new { @class = "form-singin" }))
+								{
+									@Html.AntiForgeryToken()
+									@Html.ValidationSummary(true, "", new {@class = "validations"})
+
+															<label>Usuario<span>*</span></label>
+															@Html.TextBoxFor(m => m.email_usuario, new {@class = "col-lg-12 col-12 form-control form-group", @placeholder = "Login"})
+									@Html.ValidationMessageFor(m => m.email_usuario, "", new { @class = "validations"})
+
+															<label>Clave<span>*</span></label>
+
+															@Html.TextBoxFor(m => m.password_usuario, new {@class = "col-lg-12 col-12 form-control form-group", @placeholder = "Contraseña"})
+									@Html.ValidationMessageFor(m => m.password_usuario, "", new { @class = "validations"})
+
+
+									<br>
+									<input type="submit" value="Iniciar Sesión" class="btn btn-lg btn-primary" />
+								}
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
+</section>

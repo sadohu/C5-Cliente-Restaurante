@@ -15,7 +15,7 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Models
         //comparar con el precio del otro modelo
         [Display(Name = "Precio")]
         public decimal preciouni_producto { get; set; }
-        [Display(Name = "Unidades Disponibles")]
+        [Display(Name = "Cantidad")]
         public int stock_producto { get; set; }
         [Display(Name = "Monto")]
         public decimal monto { get { return preciouni_producto * stock_producto; } }
