@@ -8,13 +8,58 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/C5_PJ_Restaurante_Cliente_MVC.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" integrity="sha512-siarrzI1u3pCqFG2LEzi87McrBmq6Tp7juVsdmGY1Dr8Saw+ZBAzDzrGwX3vgxX1NkioYNCFOVC0GpDPss10zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/ProyectEcommerce.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/ProductCard.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- StyleSheet -->
+    <!-- Bootstrap -->
+    <link href="~/css/template/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- Magnific Popup -->
+    <link href="~/css/template/magnific-popup.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome -->
+    <link href="~/css/template/font-awesome.css" rel="stylesheet" type="text/css" />
+    <!-- Fancybox -->
+    <link href="~/css/template/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Themify Icons -->
+    <link href="~/css/template/themify-icons.css" rel="stylesheet" type="text/css" />
+    <!-- Nice Select CSS -->
+    <link href="~/css/template/niceselect.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- Animate CSS -->
+    <link href="~/css/template/animate.css" rel="stylesheet" type="text/css" />
+    <!-- Flex Slider CSS -->
+    <link href="~/css/template/flex-slider.min.css" rel="stylesheet" type="text/css" />
+    <!-- Owl Carousel -->
+    <link href="~/css/template/owl-carousel.css" rel="stylesheet" type="text/css" />
+
+    <!-- Slicknav -->
+    <link href="~/css/templates/licknav.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Eshop StyleSheet -->
+    <link href="~/css/templates/reset.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/templates/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+
+    <!--font awesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow ">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Polleria Leña y Carbón</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+					<img id="loguito" src="~/img/loguito.png" alt="Logo" />
+				</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -37,8 +82,8 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="CerrarSesion">Cerrar sesión</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Canasta">
-                                <i class="far fa-cart-shopping" style="color: #ae2d2d;"></i> Canasta
+                            <a class=" btn btn-primary" asp-area="" asp-controller="Producto" asp-action="Canasta">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Canasta
                             </a>
                         </li>
                     </ul>
@@ -52,12 +97,36 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - C5_PJ_Restaurante_Cliente_MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+		<!-- End Footer Top -->
+
+    <footer class="footer">
+		<div class="copyright">
+			<div class="container">
+				<div class="inner">
+					<div class="row">
+						<div class="col-lg-6 col-12">
+							<div class="left">
+                                <p>Copyright © 2023 <a href="" target="_blank">grupito Los mas gozus :v</a>  | Polleria Leña y Carbón - Todos los derechos Reservados.</p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-12">
+							<div class="right">
+								<img src="images/payments.png" alt="#">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /End Footer Area -->
+
+
+
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
