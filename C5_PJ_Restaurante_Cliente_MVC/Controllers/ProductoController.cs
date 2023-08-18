@@ -52,7 +52,7 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
 
             //volver a serializar almacenando el Session
             HttpContext.Session.SetString("Canasta", JsonConvert.SerializeObject(temporal));
-            ViewBag.mensaje = "Producto Agregado";
+            ViewBag.mensaje = "✔ Producto "+ reg.nom_producto + " agregado !";
             return View(reg);
         }
 
@@ -90,7 +90,6 @@ namespace C5_PJ_Restaurante_Cliente_MVC.Controllers
                 id_usuario_cliente = usuario.id_usuario,
                 id_medio_pago = 1,
                 monto_compra = count,
-                id_dirEntrega = 1,
                 carts = carts
             };
 
